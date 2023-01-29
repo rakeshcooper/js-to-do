@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body{
+            margin: auto;
+            font-family: poppins,Arial, Helvetica, sans-serif;
+        }
+    
+        li{
+            position: relative;
+        }
+
+        .close {
+            position: absolute;
+            right: 0;
+            top: 0;
+            padding: 10px 16px;
+        }
+
+        .close:hover {
+            background-color: #f44336;
+            color: white;
+        }
+        
+
+        .header{
+            background-color: rgb(42, 42, 197);
+            padding: 20px;
+            text-align: center;
+        }
+        h2{
+            color: #fff;
+            margin-bottom: 5px;
+            text-align: center;
+        }
+        input{
+            padding: 10px;
+            width: 80%;
+            text-align: left;
+            margin: 0;
+            border: none;
+        }
+        button{
+            margin: 0;
+            padding: 10px 25px;
+            background-color: lightgray;
+            cursor: pointer;
+            border: none;color: gray;
+        }
+        ul li{
+            padding: 10px 85px;
+        }
+
+        ul li:nth-child(odd){
+            background-color: rgb(234, 234, 234);
+        }
+
+        ul li:hover{
+            background-color: rgb(196, 196, 196);
+            cursor: pointer;
+            transition: 100ms ease-in-out;
+        }
+    
+        ul li.checked {
+            background: #888;
+            color: #fff;
+            text-decoration: line-through;
+            position: relative;
+        }
+
+        ul li.checked::before {
+            content: '';
+            position: absolute;
+            border-color: #fff;
+            border-style: solid;
+            border-width: 0 2px 2px 0;
+            top: 10px;
+            left: 16px;
+            transform: rotate(45deg);
+            height: 15px;
+            width: 7px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h2>My To Do List</h2>
+        <input  id="todos" type="text" placeholder="Type...">
+        <button id="btn" onclick="addHandler()">Add</button>
+    </div>
+    <ul id="ul">
+        <li class="checked">Hit the gym</li>
+        <li>pay bills</li>
+        <li>Meet George</li>
+        <li>Buy Eggs</li>
+        <li>Read a Book</li>
+        <li>Organize office</li>
+    </ul>
+    <script>
+        // add checked
+
+
+
+        // close elements
+        let nodeList = document.getElementsByTagName('li');
+        for(let i = 0; i < nodeList.length; i++){
+            let span = document.createElement('span')
+            let x = document.createTextNode("\u00D7");
+            span.className = 'close';
+            span.appendChild(x);
+            nodeList[i].appendChild(span);
+        }
+
+       // add elments in todos
+        function addHandler(){
+            let input = document.getElementById('todos')
+            let inputValue = input.value;
+            let data = document.createTextNode(inputValue);
+            let list = document.createElement('li');
+            list.appendChild(data);
+            document.getElementById('ul').appendChild(list);
+            document.getElementById('todos').value = '';
+
+
+            
+            let span = document.createElement('span')
+            let x = document.createTextNode("\u00D7");
+            span.className = 'close';
+            span.appendChild(x);
+            list.appendChild(span);
+        }
+
+        
+       
+    </script>
+</body>
+</html>
