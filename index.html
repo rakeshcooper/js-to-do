@@ -109,10 +109,15 @@
     </ul>
     <script>
         // add checked
+        let check = document.querySelector('ul');
+        check.addEventListener('click', function(ev){
+        if(ev.target.tagName === 'LI'){
+            ev.target.classList.toggle('checked');
+        }
+        })
 
 
-
-        // close elements
+        // close elements symbols
         let nodeList = document.getElementsByTagName('li');
         for(let i = 0; i < nodeList.length; i++){
             let span = document.createElement('span')
@@ -121,6 +126,17 @@
             span.appendChild(x);
             nodeList[i].appendChild(span);
         }
+
+        // close elements function
+        let close = document.getElementsByClassName('close');
+        for(let i=0; i < close.length; i++){
+            close[i].onclick = function() {
+                let div = this.parentElement;
+                div.style.display = 'none';
+            }
+        }
+
+
 
        // add elments in todos
         function addHandler(){
@@ -139,6 +155,14 @@
             span.className = 'close';
             span.appendChild(x);
             list.appendChild(span);
+
+
+            for(let i=0; i < close.length; i++){
+            close[i].onclick = function() {
+                let div = this.parentElement;
+                div.style.display = 'none';
+            }
+        }
         }
 
         
